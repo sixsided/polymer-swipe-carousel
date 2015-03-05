@@ -1,0 +1,72 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<!--
+  `aspect-image` displays an image, scaling and cropping it
+  to fit the available horizontal space while preserving an aspect ratio
+    
+    <aspect-image w="16" h="9" src="cinematic.jpg" />
+
+    <aspect-image w="4" h="3" src="televisual.gif" />
+
+    <aspect-image w="1" h="1" src="instagrammatic.gif" />
+
+  By default, the <aspect-image> occupies 100% of the width of its container.
+  
+  If its image's native aspect ratio doesn't match exactly, it will be cropped.
+
+  This is usually what you want, but if you'd rather fit the image inside the w/h, 
+  add the `contain` attribute:
+
+    <aspect-image w="16" h="9" contain src="letterbox-me.jpg" />
+
+-->
+<polymer-element name="aspect-image" attributes="w h src contain">
+  <template>
+    <style>
+      :host {
+        display:block;
+        width:100%;
+      }
+      #img {
+        display: block;
+        background-size: cover;
+        background-position: center center;
+        background-repeat:no-repeat;
+        border: 1px rgba(255,255,255, 0.25) solid;
+      }
+      .truss {
+        display:block;
+      }
+    </style>
+    <div id="img" style=" background-image:url('{{src}}');">
+      <div class="truss" id="truss"></div>
+    </div>
+  </template>
+  <script>
+    /*global Polymer */
+    Polymer('aspect-image', {
+      created:function(){
+        this.w = 10;
+        this.h = 9;
+      },
+      ready:function(){
+          this.updateAspect();
+      },
+
+      // for those times when you want to change w/h via a <core-media-query> :
+      wChanged:function(){
+        this.updateAspect();
+      },
+      hChanged:function(){
+        this.updateAspect();
+      },
+      updateAspect:function(){
+        // debounce
+        this.job('_updateAspect', this._updateAspect, 100);
+      },
+      _updateAspect:function(){
+        this.$.truss.style.marginTop = (100 * (this.h / this.w)).toFixed(2) + '%';
+        this.$.img.style.backgroundSize = this.hasAttribute('contain') ? 'contain' : 'cover';
+      }
+    });
+  </script>
+</polymer-element>

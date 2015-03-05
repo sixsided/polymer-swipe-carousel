@@ -1,0 +1,32 @@
+{
+  "name": "swipe-carousel",
+  "version": "0.5",
+  "authors": [
+    "Miles Johnson <miles.johnson@weareinstrument.com>"
+  ],
+  "description": "A responsive carousel with Hammer.js gestures",
+  "main": "index.html",
+  "keywords": [
+    "polymer",
+    "carousel",
+    "hammerjs",
+    "gesture",
+    "responsive",
+    "image"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/sixsided/swipe-carousel",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "hammerjs": "~2.0.4",
+    "polymer": "~0.5.5",
+    "webcomponentsjs": "~0.5.5"
+  }
+}

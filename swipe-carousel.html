@@ -1,0 +1,102 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="hammerjs.html">
+
+<!-- `swipe-carousel`
+  a swipe/drag image carousel, for mobile, using hammerjs.
+
+  * content must have css class "carouselItem"
+  * emits ('tap-item', itemIndex) events when user taps a carouselItem
+  * always occupies 100% width of its container
+    * carouselItems should be at least as wide as this (their widths don't have to be uniform, however)
+  * BUG: loses its event handlers when dropped and re-renderd via <template if=...>
+  
+  <swipe-carousel>
+    <aspect-image w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
+    <aspect-image w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
+    <aspect-image w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
+  </swipe-carousel>
+
+-->
+<polymer-element name="swipe-carousel" attributes="items w h">
+  <template>
+    <style>
+      :host {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 25px; /* for dots */
+      }
+      #wrap {
+        position: relative;
+        overflow: hidden;
+      }
+      #carousel__scrim {
+        opacity: 0.45;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+      }
+      #strip {
+        white-space: nowrap;
+        transform: translateX(0);
+      }
+
+      /*
+        Style the distributed nodes to fit the carousel.
+        These are regular nodes under polyfilled browers.
+      */
+      polyfill-next-selector {
+        content: '.swipe-carousel-item';
+      }
+      ::content .swipe-carousel-item {
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+        box-sizing:border-box;
+      }
+
+      #dots {
+        z-index: 15;
+        display: block;
+        height: 20px;
+        text-align: center;
+        bottom: 10px; /* ride padding out of the image region */
+        position: absolute;
+        width: 100%;
+      }
+      .dot {
+        font-size:0px;
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        margin: 5px;
+        color: transparent;
+        display: inline-block;
+        background-color: #888;
+        border: 1px #888 solid;
+
+      }
+      .dot.selected {
+        background-color: rgba(255,255,255,0.5);
+      }
+    </style>
+
+    <div id="wrap">
+      <div id="carousel__scrim"></div>
+      <div id="strip">
+        <content id="kontent" select=".swipe-carousel-item"></content>
+      </div>
+    </div>
+
+    <div id="dots">
+      <template if="{{slides.length > 1}}" repeat="{{_, i in slides}}">
+        <div class="{{{dot:true, selected:i == selectedIndex} | tokenList }}">.</div>
+      </template>
+    </div>
+
+  </template>
+  <script src="swipe-carousel.js"></script>
+</polymer-element>

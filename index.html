@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+
+  <title>swipe carousel</title>
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="swipe-carousel.html">
+  <link rel="import" href="aspect-image.html">
+</head>
+<body>
+  
+  <h1>Swipe carousel demo</h1>
+
+<style>
+  body { background:#dedede; }
+  swipe-carousel aspect-image { display:inline-block; }
+</style>
+
+  <div style="width:440px;height:330px;border:2px black solid">
+    <swipe-carousel>
+      <aspect-image class="swipe-carousel-item" src="http://placekitten.com/g/400/320" w="4" h="3" ></aspect-image>
+      <aspect-image class="swipe-carousel-item" src="http://placekitten.com/g/400/401" w="4" h="3" ></aspect-image>
+      <aspect-image class="swipe-carousel-item" src="http://placekitten.com/g/320/180"  w="4" h="3"></aspect-image>
+    </swipe-carousel>
+  </div>
+
+<h1>16:9</h1>
+
+
+  <div style="width:550px;">
+    <swipe-carousel>
+      <aspect-image class="swipe-carousel-item" src="http://placekitten.com/g/400/320" w="16" h="9" ></aspect-image>
+      <aspect-image class="swipe-carousel-item" src="http://placekitten.com/g/400/401" w="16" h="9" ></aspect-image>
+      <aspect-image class="swipe-carousel-item" src="http://placekitten.com/g/320/180"  w="16" h="9"></aspect-image>
+    </swipe-carousel>
+  </div>
+
+</body>
+</html>
