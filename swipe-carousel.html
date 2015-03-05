@@ -4,16 +4,16 @@
 <!-- `swipe-carousel`
   a swipe/drag image carousel, for mobile, using hammerjs.
 
-  * content must have css class "carouselItem"
-  * emits ('tap-item', itemIndex) events when user taps a carouselItem
+  * content must have css class "swipe-carousel-item"
+  * emits ('tap-item', itemIndex) events when user taps a swipe-carousel-item
   * always occupies 100% width of its container
-    * carouselItems should be at least as wide as this (their widths don't have to be uniform, however)
+    * swipe-carousel-items should be at least as wide as this (their widths don't have to be uniform, however)
   * BUG: loses its event handlers when dropped and re-renderd via <template if=...>
   
   <swipe-carousel>
-    <aspect-image w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
-    <aspect-image w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
-    <aspect-image w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
+    <aspect-image class="swipe-carousel-item" w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
+    <aspect-image class="swipe-carousel-item" w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
+    <aspect-image class="swipe-carousel-item" w="4" h="3" src="http://placekitten.com/400/300"></aspect-image>
   </swipe-carousel>
 
 -->
